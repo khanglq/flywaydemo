@@ -1,0 +1,1 @@
+ALTER TABLE flywaydemo ADD (department VARCHAR(40) default 'foobar', number_count Number default 100);
