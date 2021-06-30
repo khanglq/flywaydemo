@@ -95,6 +95,8 @@
                         <groupId>org.flywaydb</groupId>
                         <artifactId>flyway-maven-plugin</artifactId>
                         <version>4.2.0</version>
+<!--                        <version>5.2.0</version>-->
+<!--                        <version>7.10.0</version>-->
                         <configuration>
                             <configFile>src/main/resources/config/local-oracle/flyway.properties</configFile>
                         </configuration>
