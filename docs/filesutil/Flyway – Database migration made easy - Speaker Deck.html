@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Flyway – Database migration made easy - Speaker Deck</title>
+    <link rel="stylesheet" media="screen" href="./Flyway – Database migration made easy - Speaker Deck_files/application-9a7c1037966ffb729eb25a8fb721667137adc1070d6571451354d8893e79c9c8.css">
+<script src="./Flyway – Database migration made easy - Speaker Deck_files/2893765844191276" async=""></script><script async="" src="./Flyway – Database migration made easy - Speaker Deck_files/fbevents.js.download"></script><script type="text/javascript" async="" src="./Flyway – Database migration made easy - Speaker Deck_files/ga.js.download"></script><script src="./Flyway – Database migration made easy - Speaker Deck_files/application-31c60953c0456e04b4b0.js.download"></script><style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style>
+
+<link rel="icon" type="image/png" href="https://d1eu30co0ohy4w.cloudfront.net/assets/favicon-c0fe5475f88a65b817c8cc7c0fedc01b7acc17fe27628fa13ca3f96e56e16977.png">
+<link rel="apple-touch-icon" type="image/png" href="https://d1eu30co0ohy4w.cloudfront.net/assets/favicon-c0fe5475f88a65b817c8cc7c0fedc01b7acc17fe27628fa13ca3f96e56e16977.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="UeouuMylsK9IY0vRO3VJVHkgW0papCjuQ6y3EZ2Z/AFAbnFbEKrOlCw1piytTcdUHGp3J+Rh2orTXXPVIzGD+g==">
+
+
+      <link rel="alternate" type="application/json+oembed" href="https://speakerdeck.com/oembed.json?url=https%3A%2F%2Fspeakerdeck.com%2Fbasilbourque%2Fflyway-database-migration-made-easy" title="Flyway – Database migration made easy">
+
+  <meta property="og:url" content="https://speakerdeck.com/basilbourque/flyway-database-migration-made-easy">
+  <meta property="og:site_name" content="Speaker Deck">
+  <meta property="og:title" content="Flyway – Database migration made easy">
+  <meta property="og:description" name="description" content="Introduction to [Flyway](http://www.FlywayDB.org/), the open-source tool for migrating your database changes between your dev-test-QA-prod systems. Evolve your database schema easily and reliably across all your instances. Like version control for your code, but for your database.
+
+If you manage the changes in the structure of your database with a rag-tag bunch of SQL scripts, a pile of emails, some shouts across the cube walls, luck, and desperate hope, then you may be interested in learning how to use Flyway or a similar tool to organize the process into a reliable, repeatable, testable, automated, and stress-free system.">
+  <meta property="og:type" content="website">
+  <meta property="og:author" content="https://www.facebook.com/SpeakerDeck">
+  <meta property="og:image" content="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_0.jpg?9333393">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@speakerdeck">
+  <meta name="twitter:creator" content="@speakerdeck">
+  <meta name="twitter:title" content="Flyway – Database migration made easy">
+  <meta name="twitter:description" content="Introduction to [Flyway](http://www.FlywayDB.org/), the open-source tool for migrating your database changes between your dev-test-QA-prod systems. Evolve your database schema easily and reliably across all your instances. Like version control for your code, but for your database.
+
+If you manage the changes in the structure of your database with a rag-tag bunch of SQL scripts, a pile of emails, some shouts across the cube walls, luck, and desperate hope, then you may be interested in learning how to use Flyway or a similar tool to organize the process into a reliable, repeatable, testable, automated, and stress-free system.">
+  <meta name="twitter:image:src" content="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_0.jpg?9333393">
+  <link rel="canonical" href="https://speakerdeck.com/basilbourque/flyway-database-migration-made-easy">
+
+  <meta name="stats-owner_id" content="482366">
+  <meta name="stats-talk_id" content="426583">
+  <meta name="stats-view_type" content="talk">
+
+    
+  <div id="_bsa_srv-CK7I4K3Y_0"></div><script id="_carbonads_projs" type="text/javascript" src="./Flyway – Database migration made easy - Speaker Deck_files/CK7D553I.json"></script></head>
+  <body class="sd-app">
+    
+      <div class="alert alert-banner">
+            <a class="d-block text-center text-white" href="https://speakerdeck.com/pro">
+      <span class="text-warning">Upgrade to Pro</span> — share decks privately, control downloads, hide ads and more …
+</a>
+      </div>
+    <div class="sd-menu d-md-none">
+  <div class="container sd-menu-fixed-container">
+    <div class="sd-brand">
+      <a class="sd-brand-logo" href="https://speakerdeck.com/">
+        <img alt="Speaker Deck" src="./Flyway – Database migration made easy - Speaker Deck_files/mark-f4be6df1e05965cac9f98e664a6c35f5ffdd0207385d07464a9214d6cdf76082.svg"> <span class="d-none d-md-inline">Speaker Deck</span>
+</a>    </div>
+
+      <nav class="sd-fixed-nav">
+        <div class="sd-nav-main js-toggle-container">
+          <ul class="sd-nav-fixed-group nav toggle-flex-when-off">
+            <li class="sd-nav-item d-md-block d-none">
+              <form action="https://www.google.com/cse" id="cse-search-box" class="form-inline ml-5 ml-md-3">
+                <input type="hidden" name="cx" value="010150859881542981030:hqhxyxpwtc4">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="text" name="q" id="q" value="" placeholder="Search..." class="form-control search-input mr-2">
+                <input type="submit" name="sa" value="Search" class="btn btn-outline-primary d-inline-block d-md-none d-lg-inline-block">
+              </form>
+            </li>
+            <li class="sd-nav-item nav-item">
+                <a class="sd-nav-link nav-link" href="https://speakerdeck.com/pro">
+                  <span class="d-none d-md-inline">Speaker Deck</span>
+                  <div class="badge badge-pro-prominent">PRO</div>
+</a>            </li>
+            <li class="sd-nav-item nav-item">
+              <a class="sd-nav-link nav-link" href="https://speakerdeck.com/signin">
+                Sign in
+</a>            </li>
+            <li class="sd-nav-item nav-item">
+              <a class="btn btn-primary" href="https://speakerdeck.com/signup">
+                Sign up <span class="d-none d-md-inline">for free</span>
+</a>            </li>
+            <li class="sd-nav-item d-block d-md-none">
+              <button class="btn btn-link mr-2 js-toggle-trigger" aria-label="Toggle Search">
+                <svg class="icon icon-search "><use xlink:href="/icons/icons.svg#icon-search"></use></svg>
+              </button>
+            </li>
+          </ul>
+          <ul class="sd-nav-fixed-group nav toggle-flex-when-on">
+            <li class="sd-nav-item">
+              <form action="https://www.google.com/cse" id="cse-search-box-main" class="form-inline ml-5 ml-md-3">
+                <input type="hidden" name="cx" value="010150859881542981030:hqhxyxpwtc4">
+                <input type="hidden" name="ie" value="UTF-8">
+                <div class="row">
+                  <div class="col col-auto pr-0">
+                    <input type="text" name="q" id="q-main" value="" placeholder="Search..." class="form-control search-input mr-2">
+                  </div>
+                  <div class="col col-auto">
+                    <input type="submit" name="sa" value="Search" class="btn btn-outline-primary d-inline-block d-md-none d-lg-inline-block">
+                  </div>
+                </div>
+              </form>
+            </li>
+            <li class="sd-nav-item pr-2">
+              <button class="btn btn-link js-toggle-trigger">
+                <svg class="icon icon-x "><use xlink:href="/icons/icons.svg#icon-x"></use></svg>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+  </div>
+</div>
+
+    
+    
+    <div class="sd-main">
+      
+
+
+
+<div class="deck deck-with-banner">
+  <div class="deck-background" style="background-image: url(&quot;https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_22.jpg?9333415&quot;);"></div>
+  
+  <div class="deck-header d-none d-md-block js-toggle-container">
+    <div class="container d-flex align-items-center w-100">
+      <div class="deck-header-logo py-3 flex-grow-0">
+        <a class="sd-brand-logo" href="https://speakerdeck.com/">
+          <img alt="Speaker Deck" src="./Flyway – Database migration made easy - Speaker Deck_files/mark-white-8d908558fe78e8efc8118c6fe9b9b1a9846b182c503bdc6902f97df4ddc9f3af.svg">
+</a>      </div>
+      <h4 class="deck-header-title flex-grow-1 w-100 d-none mx-3 d-md-block p-3 text-center m-0 text-white text-truncate toggle-block-when-off">
+
+
+
+
+        Flyway – Database migration made easy
+      </h4>
+      <div class="deck-header-user-nav toggle-block-when-on ml-auto">
+        <form action="https://www.google.com/cse" id="cse-search-box-deck" class="form-inline ml-5 ml-md-3">
+          <input type="hidden" name="cx" value="010150859881542981030:hqhxyxpwtc4">
+          <input type="hidden" name="ie" value="UTF-8">
+          <input type="text" name="q" id="q-deck" value="" placeholder="Search..." class="form-control form-control-inverse search-input mr-2">
+          <input type="submit" name="sa" value="Search" class="btn btn-success d-inline-block d-md-none d-lg-inline-block">
+        </form>
+      </div>
+      <div class="deck-header-user-nav toggle-block-when-on">
+        <button class="btn btn-link mr-2 js-toggle-trigger">
+          <svg class="icon icon-x "><use xlink:href="/icons/icons.svg#icon-x"></use></svg>
+        </button>
+      </div>
+      <div class="deck-header-user-nav toggle-block-when-off">
+        <button class="btn btn-link mr-2 js-toggle-trigger" aria-label="Toggle Search">
+          <svg class="icon icon-search "><use xlink:href="/icons/icons.svg#icon-search"></use></svg>
+        </button>
+      </div>
+      <div class="deck-header-user-nav flex-grow-0 dropdown py-3">
+        
+      </div>
+    </div>
+  </div>
+
+  
+<div class="deck-embed js-deck-embed" data-ratio="1.77777777777778" data-state="processed" style="width: 1281px;">
+    <div class="speakerdeck-embed-wrapper"><iframe class="speakerdeck-iframe" frameborder="0" src="./Flyway – Database migration made easy - Speaker Deck_files/a7f0bfec0ae946fd9b18d64b40ad8697.html" title="Flyway – Database migration made easy" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="border: 0px; background: padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 964px; height: 542px;"></iframe></div>
+</div>
+
+
+  <div class="deck-meta">
+    <div class="container">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-md-auto col-12 py-3">
+          <div class="row align-items-center justify-content-between justify-content-md-start">
+            <a class="d-flex align-items-center font-weight-bold text-white col-auto" href="https://speakerdeck.com/basilbourque">
+              <span class="mr-2">
+                <img class="avatar" src="./Flyway – Database migration made easy - Speaker Deck_files/df06000516b540a9d7d58309f9ad1a18.jpg" alt="Df06000516b540a9d7d58309f9ad1a18?s=47">
+              </span>
+              <span>
+                Basil Bourque
+                
+              </span>
+</a>            <div class="col-auto deck-date">
+              January 31, 2018
+            </div>
+            <div class="col-auto d-none d-md-block">
+              
+            </div>
+          </div>
+        </div>
+        <div class="col-md-auto col-12 py-md-3 pb-3">
+          <div class="row justify-content-between justify-content-md-start">
+              <div class="col-auto mr-auto mr-md-0">
+                <a class="text-white font-weight-bold" href="https://speakerdeck.com/c/programming">
+                  <svg class="icon icon-folder "><use xlink:href="/icons/icons.svg#icon-folder"></use></svg> Programming
+</a>              </div>
+            <div class="col-auto">
+              <div class="js-stargazer animated">
+      <a class="text-white font-weight-bold" title="Star this deck" href="https://speakerdeck.com/signin?return_to=%2Fbasilbourque%2Fflyway-database-migration-made-easy">
+        <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 1
+</a></div>
+
+            </div>
+            <div class="col-auto text-white font-weight-bold">
+              <span title="190 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 190</span>
+            </div>
+              <div class="col-auto text-white font-weight-bold">
+                <a title="Download PDF" href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/Flyway_2018-01-31.pdf"><svg class="icon icon-download "><use xlink:href="/icons/icons.svg#icon-download"></use></svg></a>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style media="screen">
+.native-js  {
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.native-js .native-banner {
+  display: flex;
+  padding: 20px 20px;
+  text-decoration: none;
+
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.native-js .native-banner .native-img {
+  margin-right: 20px;
+  max-height: 50px;
+  line-height: 0;
+}
+
+.native-js .native-banner .native-main {
+  display: flex;
+  max-width: 1024px;
+  margin: 0 auto;
+
+  flex-grow: 1;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.native-js .native-banner .native-details {
+  display: flex;
+  margin-right: 20px;
+
+  flex-flow: column nowrap;
+}
+
+.native-js .native-banner .native-company {
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 10px;
+  line-height: 1;
+}
+
+.native-js .native-banner .native-desc {
+  letter-spacing: 1px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.native-js .native-banner .native-cta {
+  padding: 10px 16px;
+  border-radius: 3px;
+  box-shadow: 0 6px 13px 0 hsla(0, 0%, 0%, .15);
+  text-transform: uppercase;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  line-height: 1;
+  font-weight: 400;
+  font-size: 12px;
+  transition: all .3s ease-in-out;
+  transform: translateY(-1px);
+}
+
+.native-js .native-banner .native-cta:hover {
+  box-shadow: none;
+  transform: translateY(1px);
+}
+
+.native-js .native-source {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 5px;
+  border-top: 0;
+  border-top-left-radius: 3px;
+  background: repeating-linear-gradient(-45deg, transparent, transparent 5px, hsla(0, 0%, 0%, .025) 5px, hsla(0, 0%, 0%, .025) 10px) hsla(203, 11%, 95%, .4);
+  color: #111;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  font-weight: 600;
+  font-size: 7px;
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 759px) {
+  .native-js .native-banner,
+  .native-js .native-banner .native-main {
+    flex-flow: column nowrap;
+  }
+
+  .native-js .native-banner .native-img,
+  .native-js .native-banner .native-details {
+    margin: 0;
+  }
+
+  .native-js .native-banner .native-img {
+    display: none;
+  }
+
+  .native-js .native-banner .native-company {
+    letter-spacing: 1px;
+  }
+
+  .native-js .native-banner .native-details {
+    text-align:  left;
+    font-size: 14px;
+  }
+
+  .native-js .native-banner .native-cta {
+    display: none;
+  }
+}
+</style>
+<script src="./Flyway – Database migration made easy - Speaker Deck_files/monetization.js.download" type="text/javascript"></script>
+<div class="native-js"><div id="_custom_" data-attributes="{&quot;type&quot;:&quot;custom&quot;,&quot;key&quot;:&quot;CK7I4K3Y&quot;,&quot;segment&quot;:&quot;placement:speakerdeckcom&quot;,&quot;options&quot;:{&quot;target&quot;:&quot;.native-js&quot;,&quot;template&quot;:&quot;\n&lt;a href=\&quot;##link##\&quot; class=\&quot;native-banner\&quot; style=\&quot;background: linear-gradient(-30deg, ##backgroundColor##E5, ##backgroundColor##E5 45%, ##backgroundColor## 45%) #fff;\&quot;&gt;\n    &lt;div class=\&quot;native-main\&quot;&gt;\n      &lt;img class=\&quot;native-img\&quot; img src=\&quot;##logo##\&quot;&gt;\n      &lt;div class=\&quot;native-details\&quot; style=\&quot;color: ##textColor##\&quot;&gt;\n        &lt;span class=\&quot;native-company\&quot;&gt;Sponsored by ##company##&lt;/span&gt;\n        &lt;span class=\&quot;native-desc\&quot;&gt;##description##&lt;/span&gt;\n      &lt;/div&gt;\n      &lt;span class=\&quot;native-cta\&quot; style=\&quot;color: ##ctaTextColor##; background-color: ##ctaBackgroundColor##;\&quot;&gt;##callToAction##&lt;/span&gt;\n    &lt;/div&gt;\n  &lt;/a&gt;\n&quot;,&quot;script_id&quot;:&quot;_bsa_srv-CK7I4K3Y_0&quot;,&quot;platforms&quot;:[&quot;desktop&quot;,&quot;mobile&quot;]},&quot;ads&quot;:[{&quot;active&quot;:&quot;1&quot;,&quot;ad_via_link&quot;:&quot;http://selfserve.buysellads.com/checkout/new/?utm_source=speakerdeck-com-custom&amp;utm_medium=ad_via_link&amp;utm_campaign=in_unit&amp;utm_term=custom&quot;,&quot;backgroundColor&quot;:&quot;#ee3625&quot;,&quot;backgroundHoverColor&quot;:&quot;#ee3625&quot;,&quot;bannerid&quot;:&quot;425880&quot;,&quot;callToAction&quot;:&quot;10 FREE images&quot;,&quot;company&quot;:&quot;Shutterstock&quot;,&quot;companyTagline&quot;:&quot;Get 10 FREE images&quot;,&quot;creativeid&quot;:&quot;469271&quot;,&quot;ctaBackgroundColor&quot;:&quot;#3251d7&quot;,&quot;ctaBackgroundHoverColor&quot;:&quot;#ee3625&quot;,&quot;ctaTextColor&quot;:&quot;#ffffff&quot;,&quot;ctaTextColorHover&quot;:&quot;#ffffff&quot;,&quot;description&quot;:&quot;🥳Take advantage of Shutterstock&#39;s 1-month free trial and download 10 images on us! 🙌&quot;,&quot;evenodd&quot;:&quot;0&quot;,&quot;external_id&quot;:&quot;88022&quot;,&quot;height&quot;:&quot;0&quot;,&quot;i&quot;:&quot;0&quot;,&quot;identifier&quot;:&quot;792d24ee32065ee4d5932864aa663d0b&quot;,&quot;image&quot;:&quot;https://cdn4.buysellads.net/uu/1/93750/1625593009-shutterstock-80x80.png&quot;,&quot;logo&quot;:&quot;https://cdn4.buysellads.net/uu/1/93750/1625593013-logo_250x100_white_-_nativecpc.png&quot;,&quot;longimp&quot;:&quot;T34QT3Z3TTTTTT6V2Y3N4TTTTTTT55T4K6TTTTTT4TVEPYVTTTTTT&quot;,&quot;longlink&quot;:&quot;TH4QT3Z3TTTTTT6V2Y3N4TTTTTTT55T4K6TTTTTT4TVEPYVTTTTTTNZ2P7PDEWSGC2BCO7ZNK7ZUPB4DC7P6C24KK2EE&quot;,&quot;num_slots&quot;:&quot;1&quot;,&quot;pixel&quot;:&quot;https://924-img.c3tag.com/v.gif?cid=924&amp;c3=N349404.3227239CARBONADS-308217055&amp;creative=153930056&quot;,&quot;rendering&quot;:&quot;custom&quot;,&quot;statimp&quot;:&quot;//srv.buysellads.com/ads/imp/x/GTND42JLCASIP23MCYB4YKQNCVSIKKQWFTBIKZ3JCY7D52QICW7IK27KC67DC53MCTAIVK7NC6AI6KQEF6SD5KQ7HEYIKKJUCA7D6K3ECTNCLSZE5QLUCASQ2RUT&quot;,&quot;statlink&quot;:&quot;//srv.buysellads.com/ads/click/x/GTND42JLCASIP23MCYB4YKQNCVSIKKQWFTBIKZ3JCY7D52QICW7IK27KC67DC53MCTAIVK7NC6AI6KQEF6SD5KQ7HEYIKKJUCA7D6K3ECTNCYBZ52K&quot;,&quot;textColor&quot;:&quot;#ffffff&quot;,&quot;textColorHover&quot;:&quot;#ffffff&quot;,&quot;timestamp&quot;:&quot;1627725087&quot;,&quot;width&quot;:&quot;0&quot;,&quot;zoneid&quot;:&quot;33108&quot;,&quot;zonekey&quot;:&quot;CK7I4K3Y&quot;}]}">
+<a href="https://srv.buysellads.com/ads/click/x/GTND42JLCASIP23MCYB4YKQNCVSIKKQWFTBIKZ3JCY7D52QICW7IK27KC67DC53MCTAIVK7NC6AI6KQEF6SD5KQ7HEYIKKJUCA7D6K3ECTNCYBZ52K?segment=placement:speakerdeckcom;" class="native-banner" style="background: linear-gradient(-30deg, #ee3625E5, #ee3625E5 45%, #ee3625 45%) #fff;">
+    <div class="native-main">
+      <img class="native-img" img="" src="./Flyway – Database migration made easy - Speaker Deck_files/1625593013-logo_250x100_white_-_nativecpc.png">
+      <div class="native-details" style="color: #ffffff">
+        <span class="native-company">Sponsored by Shutterstock</span>
+        <span class="native-desc">🥳Take advantage of Shutterstock's 1-month free trial and download 10 images on us! 🙌</span>
+      </div>
+      <span class="native-cta" style="color: #ffffff; background-color: #3251d7;">10 FREE images</span>
+    </div>
+  </a>
+<img src="./Flyway – Database migration made easy - Speaker Deck_files/v.gif" style="display:none;" height="0" width="0"></div></div>
+<script>
+(function(){
+  if(typeof _bsa !== 'undefined' && _bsa) {
+      _bsa.init('custom', 'CK7I4K3Y', 'placement:speakerdeckcom',
+        {
+          target: '.native-js',
+          template: `
+<a href="##link##" class="native-banner" style="background: linear-gradient(-30deg, ##backgroundColor##E5, ##backgroundColor##E5 45%, ##backgroundColor## 45%) #fff;">
+    <div class="native-main">
+      <img class="native-img" img src="##logo##">
+      <div class="native-details" style="color: ##textColor##">
+        <span class="native-company">Sponsored by ##company##</span>
+        <span class="native-desc">##description##</span>
+      </div>
+      <span class="native-cta" style="color: ##ctaTextColor##; background-color: ##ctaBackgroundColor##;">##callToAction##</span>
+    </div>
+  </a>
+`,
+        }
+      );
+    }
+})();
+</script>
+
+<div class="container container-lg py-md-5 py-3">
+  <h1 class="mb-4">Flyway – Database migration made&nbsp;easy</h1>
+    <div class="deck-description mb-4">
+      <p>Introduction to [Flyway](<a rel="nofollow" href="http://www.flywaydb.org/">http://www.FlywayDB.org/</a>), the open-source tool for migrating your database changes between your dev-test-QA-prod systems. Evolve your database schema easily and reliably across all your instances. Like version control for your code, but for your database.</p>
+
+<p>If you manage the changes in the structure of your database with a rag-tag bunch of SQL scripts, a pile of emails, some shouts across the cube walls, luck, and desperate hope, then you may be interested in learning how to use Flyway or a similar tool to organize the process into a reliable, repeatable, testable, automated, and stress-free system.</p>
+    </div>
+  <div class="row align-items-center mb-4">
+    <div class="col-md-auto col-12 mr-md-auto mb-4 mb-md-0">
+      <div class="row align-items-center">
+        <div class="col-auto">
+          <a href="https://speakerdeck.com/basilbourque"><img class="avatar avatar-large" src="./Flyway – Database migration made easy - Speaker Deck_files/df06000516b540a9d7d58309f9ad1a18(1).jpg" alt="Df06000516b540a9d7d58309f9ad1a18?s=128"></a>
+        </div>
+        <div class="col-auto pl-0">
+          <h2 class="m-0 h4">
+            <a class="text-dark" href="https://speakerdeck.com/basilbourque">Basil Bourque</a>
+            
+          </h2>
+          <div class="text-muted">
+              January 31, 2018
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-auto col-12">
+      <div class="btn-group btn-group-flex d-flex" role="group">
+        
+        <a href="https://twitter.com/intent/tweet?url=https://speakerdeck.com/basilbourque/flyway-database-migration-made-easy&amp;text=Flyway+%E2%80%93+Database+migration+made+easy" class="btn btn-outline-primary w-100">
+          <svg class="icon icon-twitter "><use xlink:href="/icons/icons.svg#icon-twitter"></use></svg> Tweet
+        </a>
+        <button class="facebook-share btn btn-outline-primary w-100">
+          <svg class="icon icon-facebook "><use xlink:href="/icons/icons.svg#icon-facebook"></use></svg> Share
+        </button>
+      </div>
+    </div>
+  </div>
+
+  
+        <div class="carbon-container">
+          <script async="" type="text/javascript" src="./Flyway – Database migration made easy - Speaker Deck_files/carbon.js.download" id="_carbonads_js"></script><div id="carbonads"><span><span class="carbon-wrap"><a href="https://srv.carbonads.net/ads/click/x/GTND42JLCASIP23UFT7LYKQNCVSIKKQWFTSD4Z3JCY7D52QICWBDT5QKC67DC53MCTAIVK7NC6AI6KQEF6SD5KQ7HEYIKKJUCA7D6K3ECTNCYBZ52K?segment=placement:speakerdeckcom;" class="carbon-img" target="_blank" rel="noopener sponsored"><img src="./Flyway – Database migration made easy - Speaker Deck_files/1625608503-red_updated.png" alt="ads via Carbon" border="0" height="100" width="130" style="max-width: 130px;"></a><a href="https://srv.carbonads.net/ads/click/x/GTND42JLCASIP23UFT7LYKQNCVSIKKQWFTSD4Z3JCY7D52QICWBDT5QKC67DC53MCTAIVK7NC6AI6KQEF6SD5KQ7HEYIKKJUCA7D6K3ECTNCYBZ52K?segment=placement:speakerdeckcom;" class="carbon-text" target="_blank" rel="noopener sponsored">Download 10 FREE images from Shutterstock’s world-class library with a 1-month free trial.</a></span><a href="http://carbonads.net/?utm_source=speakerdeckcom&amp;utm_medium=ad_via_link&amp;utm_campaign=in_unit&amp;utm_term=carbon" class="carbon-poweredby" target="_blank" rel="noopener sponsored">ads via Carbon</a><img src="./Flyway – Database migration made easy - Speaker Deck_files/v(1).gif" border="0" height="1" width="1" alt="ads via Carbon" style="display: none;"></span></div>
+        </div>
+      
+</div>
+
+<div class="bg-lightest border-top">
+  <div class="container py-md-4 py-3">
+      <div class="row mb-4 align-items-center">
+        <div class="col-12 col-lg-9 mb-3 mb-lg-0">
+          <h2 class="m-0">More Decks by Basil Bourque</h2>
+        </div>
+        <div class="col-12 col-lg-3 text-lg-right">
+          <a class="btn btn-outline-primary" href="https://speakerdeck.com/basilbourque">
+            See All by Basil Bourque  <svg class="icon icon-chevron-right "><use xlink:href="/icons/icons.svg#icon-chevron-right"></use></svg>
+</a>        </div>
+      </div>
+      <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/basilbourque/tables-and-columns-and-rows-oh-my" title="Tables and columns and rows! Oh my!">
+      <div class="card deck-preview" data-id="4ffa5ee0766e433ab52937c2faaa3cd1" data-slide-count="41" data-cover-image="https://files.speakerdeck.com/presentations/4ffa5ee0766e433ab52937c2faaa3cd1/preview_slide_0.jpg?9936691">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/4ffa5ee0766e433ab52937c2faaa3cd1/preview_slide_0.jpg?9936691&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/4ffa5ee0766e433ab52937c2faaa3cd1/preview_slide_0.jpg?9936691&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/df06000516b540a9d7d58309f9ad1a18(2).jpg" alt="Df06000516b540a9d7d58309f9ad1a18?s=48">
+              basilbourque
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 1
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="88 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 88</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/basilbourque/vaadin-web-apps-made-easy" title="Vaadin — web apps made easy">
+      <div class="card deck-preview" data-id="979c1262b8d34dad8ea4d79dbd811c0c" data-slide-count="47" data-cover-image="https://files.speakerdeck.com/presentations/979c1262b8d34dad8ea4d79dbd811c0c/preview_slide_0.jpg?9936584">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/979c1262b8d34dad8ea4d79dbd811c0c/preview_slide_0.jpg?9936584&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/979c1262b8d34dad8ea4d79dbd811c0c/preview_slide_0.jpg?9936584&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/df06000516b540a9d7d58309f9ad1a18(2).jpg" alt="Df06000516b540a9d7d58309f9ad1a18?s=48">
+              basilbourque
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 1
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="133 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 130</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/basilbourque/java-dot-time-date-time-programming-made-easy" title="java.time — Date-time programming made easy">
+      <div class="card deck-preview" data-id="2de0253b04384e679d40ca1d3596079e" data-slide-count="38" data-cover-image="https://files.speakerdeck.com/presentations/2de0253b04384e679d40ca1d3596079e/preview_slide_0.jpg?9346019">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/2de0253b04384e679d40ca1d3596079e/preview_slide_0.jpg?9346019&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/2de0253b04384e679d40ca1d3596079e/preview_slide_0.jpg?9346019&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/df06000516b540a9d7d58309f9ad1a18(2).jpg" alt="Df06000516b540a9d7d58309f9ad1a18?s=48">
+              basilbourque
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 2
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="78 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 78</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/basilbourque/10-in-10-ten-new-things-in-postgres-10" title="10 in 10: Ten new things in Postgres 10">
+      <div class="card deck-preview" data-id="4a1980ec35374d06a905a2f5389975fe" data-slide-count="70" data-cover-image="https://files.speakerdeck.com/presentations/4a1980ec35374d06a905a2f5389975fe/preview_slide_0.jpg?9333323">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/4a1980ec35374d06a905a2f5389975fe/preview_slide_0.jpg?9333323&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/4a1980ec35374d06a905a2f5389975fe/preview_slide_0.jpg?9333323&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/df06000516b540a9d7d58309f9ad1a18(2).jpg" alt="Df06000516b540a9d7d58309f9ad1a18?s=48">
+              basilbourque
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 0
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="127 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 130</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/basilbourque/make-a-date-with-postgres" title="Make a date with Postgres">
+      <div class="card deck-preview" data-id="bb29740c20f34bb38b2253190ab30c90" data-slide-count="37" data-cover-image="https://files.speakerdeck.com/presentations/bb29740c20f34bb38b2253190ab30c90/preview_slide_0.jpg?9333592">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/bb29740c20f34bb38b2253190ab30c90/preview_slide_0.jpg?9333592&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/bb29740c20f34bb38b2253190ab30c90/preview_slide_0.jpg?9333592&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/df06000516b540a9d7d58309f9ad1a18(2).jpg" alt="Df06000516b540a9d7d58309f9ad1a18?s=48">
+              basilbourque
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 0
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="128 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 130</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+      </div>
+
+      <div class="row mb-4 align-items-center">
+        <div class="col-12 col-lg-9 mb-3 mb-lg-0">
+          <h2 class="m-0">Other Decks in Programming</h2>
+        </div>
+        <div class="col-12 col-lg-3 text-lg-right">
+          <a class="btn btn-outline-primary" href="https://speakerdeck.com/c/programming">
+            See All in Programming <svg class="icon icon-chevron-right "><use xlink:href="/icons/icons.svg#icon-chevron-right"></use></svg>
+</a>        </div>
+      </div>
+      <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/yoshikiiida/readable-code-by-ddd" title="リーダブルコード by DDD / Readable Code by DDD">
+      <div class="card deck-preview" data-id="7cefae27f3994d8e82b7176c003320bd" data-slide-count="32" data-cover-image="https://files.speakerdeck.com/presentations/7cefae27f3994d8e82b7176c003320bd/preview_slide_0.jpg?18493135">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/7cefae27f3994d8e82b7176c003320bd/preview_slide_0.jpg?18493135&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/7cefae27f3994d8e82b7176c003320bd/preview_slide_0.jpg?18493135&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/aa5b922fefbf18bea89972521971dfea.jpeg" alt="Aa5b922fefbf18bea89972521971dfea?s=48">
+              yoshikiiida
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 20
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="7,916 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 7.9k</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/azuki/vue-dot-js-to-chart-dot-js-detiyatowomiao-hua-suru" title="Vue.js と Chart.js でチャートを描画する">
+      <div class="card deck-preview" data-id="efdb3d167d964116b071722c104e7780" data-slide-count="18" data-cover-image="https://files.speakerdeck.com/presentations/efdb3d167d964116b071722c104e7780/preview_slide_0.jpg?18441214">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/efdb3d167d964116b071722c104e7780/preview_slide_0.jpg?18441214&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/efdb3d167d964116b071722c104e7780/preview_slide_0.jpg?18441214&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/be33a704f251c77162896ac5ba03e9ac.jpg" alt="Be33a704f251c77162896ac5ba03e9ac?s=48">
+              azuki
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 0
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="213 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 210</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/aokabic/qu-wei-dehazimeru-domeinqu-dong-she-ji-plus-kurinakitekutiya" title="趣味ではじめる ドメイン駆動設計+クリーンアーキテクチャ">
+      <div class="card deck-preview" data-id="31b6d9476f2447f09e2cb2b442a312ff" data-slide-count="34" data-cover-image="https://files.speakerdeck.com/presentations/31b6d9476f2447f09e2cb2b442a312ff/preview_slide_0.jpg?18560361">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/31b6d9476f2447f09e2cb2b442a312ff/preview_slide_0.jpg?18560361&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/31b6d9476f2447f09e2cb2b442a312ff/preview_slide_0.jpg?18560361&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/d840733454bebebb5d6f0a2d95754897.jpeg" alt="D840733454bebebb5d6f0a2d95754897?s=48">
+              aokabic
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 1
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="150 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 150</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/marushosummers/saizeriyagatiyade-pwakai-fa-niru-men-sitahua" title="サイゼリヤガチャで PWA開発に入門した話">
+      <div class="card deck-preview" data-id="5f3f5cf29ec9403e90dce1a95437e959" data-slide-count="18" data-cover-image="https://files.speakerdeck.com/presentations/5f3f5cf29ec9403e90dce1a95437e959/preview_slide_0.jpg?18396646">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/5f3f5cf29ec9403e90dce1a95437e959/preview_slide_0.jpg?18396646&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/5f3f5cf29ec9403e90dce1a95437e959/preview_slide_0.jpg?18396646&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/bd7bd8f154dbbbdc40af37d59baec53b.jpg" alt="Bd7bd8f154dbbbdc40af37d59baec53b?s=48">
+              marushosummers
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 0
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="753 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 750</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/t2kob/ddd-domeinqu-dong-she-ji-ru-men-hazimefalse-bu" title="DDD: ドメイン駆動設計 入門 ～はじめの一歩～">
+      <div class="card deck-preview" data-id="41a9204cba8a4d22893d2cc8b031f1a3" data-slide-count="198" data-cover-image="https://files.speakerdeck.com/presentations/41a9204cba8a4d22893d2cc8b031f1a3/preview_slide_0.jpg?18387079">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/41a9204cba8a4d22893d2cc8b031f1a3/preview_slide_0.jpg?18387079&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/41a9204cba8a4d22893d2cc8b031f1a3/preview_slide_0.jpg?18387079&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/b7424f2bb6afd48c51cf88c2c15c395d.jpg" alt="B7424f2bb6afd48c51cf88c2c15c395d?s=48">
+              t2kob
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 0
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="128 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 130</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/typewriter/google-engineering-practices-de-shi-liu-niao-falsekodorebiyu" title="Google Engineering Practices で 一石六鳥のコードレビュー">
+      <div class="card deck-preview" data-id="1c0e3534aaea491f9ca2bcb774eeaf8b" data-slide-count="29" data-cover-image="https://files.speakerdeck.com/presentations/1c0e3534aaea491f9ca2bcb774eeaf8b/preview_slide_0.jpg?18673818">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/1c0e3534aaea491f9ca2bcb774eeaf8b/preview_slide_0.jpg?18673818&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/1c0e3534aaea491f9ca2bcb774eeaf8b/preview_slide_0.jpg?18673818&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/d833ebe946fb6c3ca990758737855f79.jpeg" alt="D833ebe946fb6c3ca990758737855f79?s=48">
+              typewriter
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 0
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="129 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 130</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/bateleurx/webrtcpei-xin-sisutemuwoawskaraonpuremisuniqie-riti-eteiruhua" title="WebRTC配信システムをAWSからオンプレミスに切り替えている話">
+      <div class="card deck-preview" data-id="bce87aac539147b2a32d228fcaa4b7d7" data-slide-count="36" data-cover-image="https://files.speakerdeck.com/presentations/bce87aac539147b2a32d228fcaa4b7d7/preview_slide_0.jpg?18679750">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/bce87aac539147b2a32d228fcaa4b7d7/preview_slide_0.jpg?18679750&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/bce87aac539147b2a32d228fcaa4b7d7/preview_slide_0.jpg?18679750&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/dd5ce24e9cc88d7a491aec105e558d7e.jpeg" alt="Dd5ce24e9cc88d7a491aec105e558d7e?s=48">
+              bateleurx
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 10
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="8,322 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 8.3k</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/ironwest/number-qian-chu-li-r-daunrodo" title="#前処理R ダウンロード">
+      <div class="card deck-preview" data-id="8308c0ab42c54641b4e88863aafb73b3" data-slide-count="38" data-cover-image="https://files.speakerdeck.com/presentations/8308c0ab42c54641b4e88863aafb73b3/preview_slide_0.jpg?18647679">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/8308c0ab42c54641b4e88863aafb73b3/preview_slide_0.jpg?18647679&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/8308c0ab42c54641b4e88863aafb73b3/preview_slide_0.jpg?18647679&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/654bfd58e2b78f573bd9b40a60cb0b44.jpg" alt="654bfd58e2b78f573bd9b40a60cb0b44?s=48">
+              ironwest
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 0
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="111 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 110</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/manfredsteyer/the-micro-frontend-revolution-module-federation-with-angular-c702ec93-f2b3-4c4f-a21b-47a4b9e6be8e" title="The Micro Frontend Revolution: Module Federation with Angular">
+      <div class="card deck-preview" data-id="a60657ff0bd840968a2f607fff43c7a7" data-slide-count="29" data-cover-image="https://files.speakerdeck.com/presentations/a60657ff0bd840968a2f607fff43c7a7/preview_slide_0.jpg?18580328">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/a60657ff0bd840968a2f607fff43c7a7/preview_slide_0.jpg?18580328&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/a60657ff0bd840968a2f607fff43c7a7/preview_slide_0.jpg?18580328&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/15934fa2aa7b2ce21f091e9b7cffa856.jpeg" alt="15934fa2aa7b2ce21f091e9b7cffa856?s=48">
+              manfredsteyer
+            </div>
+              <div class="pr-2 mr-auto py-3">
+                  <div class="badge badge-pro ">PRO</div>
+
+              </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 0
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="146 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 150</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/usamik26/meet-asyncsequence" title="Meet AsyncSequence">
+      <div class="card deck-preview" data-id="c99d1911810b44b0878fac5f8318b7c1" data-slide-count="16" data-cover-image="https://files.speakerdeck.com/presentations/c99d1911810b44b0878fac5f8318b7c1/preview_slide_0.jpg?18439634">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/c99d1911810b44b0878fac5f8318b7c1/preview_slide_0.jpg?18439634&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/c99d1911810b44b0878fac5f8318b7c1/preview_slide_0.jpg?18439634&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/0b26590a0a8b0f1da140ed5de9b68379.jpeg" alt="0b26590a0a8b0f1da140ed5de9b68379?s=48">
+              usamik26
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 0
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="235 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 240</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/camaelon/advanced-design-patterns-with-constraintlayout-2-dot-1" title="Advanced Design Patterns with ConstraintLayout 2.1">
+      <div class="card deck-preview" data-id="6aedc3135281468c8705d65f0adde055" data-slide-count="75" data-cover-image="https://files.speakerdeck.com/presentations/6aedc3135281468c8705d65f0adde055/preview_slide_0.jpg?18609250">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/6aedc3135281468c8705d65f0adde055/preview_slide_0.jpg?18609250&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/6aedc3135281468c8705d65f0adde055/preview_slide_0.jpg?18609250&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/b9012970f22b84c5b344ffa6f8a884d5.jpg" alt="B9012970f22b84c5b344ffa6f8a884d5?s=48">
+              camaelon
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 0
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="133 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 130</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/croe/clubhousefalseyounashi-zu-miwo-shi-tutaonrainzhan-lan-hui-wo-zuo-tutemimasitagahe-kazhi-wen-aru" title="Clubhouseのような仕組みを 使ったオンライン展覧会を 作ってみましたが何か質問ある？👋 ">
+      <div class="card deck-preview" data-id="cc5eb87d52ce40cbbf01ca3a308c46a2" data-slide-count="25" data-cover-image="https://files.speakerdeck.com/presentations/cc5eb87d52ce40cbbf01ca3a308c46a2/preview_slide_0.jpg?18560859">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/cc5eb87d52ce40cbbf01ca3a308c46a2/preview_slide_0.jpg?18560859&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/cc5eb87d52ce40cbbf01ca3a308c46a2/preview_slide_0.jpg?18560859&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/f172ce6f89fdaae222055bd3625960bd.jpg" alt="F172ce6f89fdaae222055bd3625960bd?s=48">
+              croe
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 0
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="143 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 140</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+      </div>
+
+      <div class="row mb-4 align-items-center">
+        <div class="col-12 col-lg-9 mb-3 mb-lg-0">
+          <h2 class="m-0">Featured</h2>
+        </div>
+        <div class="col-12 col-lg-3 text-lg-right">
+          <a class="btn btn-outline-primary" href="https://speakerdeck.com/p/featured">
+            See All Featured <svg class="icon icon-chevron-right "><use xlink:href="/icons/icons.svg#icon-chevron-right"></use></svg>
+</a>        </div>
+      </div>
+      <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/cromwellryan/making-the-leap-to-tech-lead" title="Making the Leap to Tech Lead">
+      <div class="card deck-preview" data-id="f35d80cef9ab4089afa5fe0803215140" data-slide-count="30" data-cover-image="https://files.speakerdeck.com/presentations/f35d80cef9ab4089afa5fe0803215140/preview_slide_0.jpg?13936250">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/f35d80cef9ab4089afa5fe0803215140/preview_slide_0.jpg?13936250&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/f35d80cef9ab4089afa5fe0803215140/preview_slide_0.jpg?13936250&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/32de0bd2ba869609d26fd052a4622778.jpeg" alt="32de0bd2ba869609d26fd052a4622778?s=48">
+              cromwellryan
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 107
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="6,434 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 6.4k</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/chriscoyier/how-to-stay-up-to-date-on-web-technology" title="How To Stay Up To Date on Web Technology">
+      <div class="card deck-preview" data-id="5112451026bf013092b722000a1d8877" data-slide-count="84" data-cover-image="https://files.speakerdeck.com/presentations/5112451026bf013092b722000a1d8877/preview_slide_0.jpg?1503043">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/5112451026bf013092b722000a1d8877/preview_slide_0.jpg?1503043&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/5112451026bf013092b722000a1d8877/preview_slide_0.jpg?1503043&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/8081b26e05bb4354f7d65ffc34cbbd67.jpeg" alt="8081b26e05bb4354f7d65ffc34cbbd67?s=48">
+              chriscoyier
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 779
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="243,785 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 240k</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/mojombo/optimizing-for-happiness" title="Optimizing for Happiness">
+      <div class="card deck-preview" data-id="4ebaea7763912f032300cbe8" data-slide-count="75" data-cover-image="https://files.speakerdeck.com/presentations/4ebaea7763912f032300cbe8/preview_slide_0.jpg?621341">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/4ebaea7763912f032300cbe8/preview_slide_0.jpg?621341&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/4ebaea7763912f032300cbe8/preview_slide_0.jpg?621341&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/25c7c18223fb42a4c6ae1c8db6f50f9b.png" alt="25c7c18223fb42a4c6ae1c8db6f50f9b?s=48">
+              mojombo
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 364
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="62,630 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 63k</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/lemiorhan/10-git-anti-patterns-you-should-be-aware-of" title="10 Git Anti Patterns You Should be Aware of">
+      <div class="card deck-preview" data-id="1eaed7dabacb4f9b9c96b08de38eb9e1" data-slide-count="60" data-cover-image="https://files.speakerdeck.com/presentations/1eaed7dabacb4f9b9c96b08de38eb9e1/preview_slide_0.jpg?10180198">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/1eaed7dabacb4f9b9c96b08de38eb9e1/preview_slide_0.jpg?10180198&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/1eaed7dabacb4f9b9c96b08de38eb9e1/preview_slide_0.jpg?10180198&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/dafc4723e9a1c067796c0fec6f509774.jpeg" alt="Dafc4723e9a1c067796c0fec6f509774?s=48">
+              lemiorhan
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 633
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="48,748 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 49k</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/smashingmag/responsive-adventures-dirty-tricks-from-the-dark-corners-of-front-end" title="Responsive Adventures: Dirty Tricks From The Dark Corners of Front-End">
+      <div class="card deck-preview" data-id="628fffa383884513b4ba01a61d82eee8" data-slide-count="395" data-cover-image="https://files.speakerdeck.com/presentations/628fffa383884513b4ba01a61d82eee8/preview_slide_0.jpg?7358869">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/628fffa383884513b4ba01a61d82eee8/preview_slide_0.jpg?7358869&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/628fffa383884513b4ba01a61d82eee8/preview_slide_0.jpg?7358869&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/b3d6434763caa0ef5dc4b792662c49f7.png" alt="B3d6434763caa0ef5dc4b792662c49f7?s=48">
+              smashingmag
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 235
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="17,888 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 18k</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/dougneiner/streamline-your-ajax-requests-with-amplifyjs-and-jquery" title="Streamline your AJAX requests with AmplifyJS and jQuery">
+      <div class="card deck-preview" data-id="4eab13446a7fd7005400096f" data-slide-count="25" data-cover-image="https://files.speakerdeck.com/presentations/4eab13446a7fd7005400096f/preview_slide_0.jpg?607292">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/4eab13446a7fd7005400096f/preview_slide_0.jpg?607292&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/4eab13446a7fd7005400096f/preview_slide_0.jpg?607292&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/9cde37f47e4a800ea081ea42de8d749a.jpeg" alt="9cde37f47e4a800ea081ea42de8d749a?s=48">
+              dougneiner
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 122
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="8,152 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 8.2k</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/kastner/put-a-button-on-it-removing-barriers-to-going-fast" title="Put a Button on it: Removing Barriers to Going Fast.">
+      <div class="card deck-preview" data-id="4e810c4afcde740060003031" data-slide-count="97" data-cover-image="https://files.speakerdeck.com/presentations/4e810c4afcde740060003031/preview_slide_0.jpg?545481">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/4e810c4afcde740060003031/preview_slide_0.jpg?545481&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/4e810c4afcde740060003031/preview_slide_0.jpg?545481&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/bfd6b681ec6e8c9bef82ff0521c364f7.jpeg" alt="Bfd6b681ec6e8c9bef82ff0521c364f7?s=48">
+              kastner
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 55
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="2,015 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 2k</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/michaelherold/whats-in-a-price-how-to-price-your-products-and-services" title="What&#39;s in a price? How to price your products and services">
+      <div class="card deck-preview" data-id="e3f7bdb17bba4b63bed9ed368da014ff" data-slide-count="191" data-cover-image="https://files.speakerdeck.com/presentations/e3f7bdb17bba4b63bed9ed368da014ff/preview_slide_0.jpg?9845605">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/e3f7bdb17bba4b63bed9ed368da014ff/preview_slide_0.jpg?9845605&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/e3f7bdb17bba4b63bed9ed368da014ff/preview_slide_0.jpg?9845605&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/dad095ea7038f89f760419ce475d5d14.jpeg" alt="Dad095ea7038f89f760419ce475d5d14?s=48">
+              michaelherold
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 227
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="8,816 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 8.8k</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/keithpitt/keith-and-marios-guide-to-fast-websites" title="Keith and Marios Guide to Fast Websites">
+      <div class="card deck-preview" data-id="ac0c8af05fc10130a2f822000a1c835e" data-slide-count="83" data-cover-image="https://files.speakerdeck.com/presentations/ac0c8af05fc10130a2f822000a1c835e/preview_slide_0.jpg?1097250">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/ac0c8af05fc10130a2f822000a1c835e/preview_slide_0.jpg?1097250&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/ac0c8af05fc10130a2f822000a1c835e/preview_slide_0.jpg?1097250&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/e14f55d3f939977cecbf51b64ff6f861.png" alt="E14f55d3f939977cecbf51b64ff6f861?s=48">
+              keithpitt
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 403
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="20,201 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 20k</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/destraynor/the-language-of-interfaces" title="The Language of Interfaces">
+      <div class="card deck-preview" data-id="4e72275f20448a003c000b3b" data-slide-count="109" data-cover-image="https://files.speakerdeck.com/presentations/4e72275f20448a003c000b3b/preview_slide_0.jpg?532287">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/4e72275f20448a003c000b3b/preview_slide_0.jpg?532287&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/4e72275f20448a003c000b3b/preview_slide_0.jpg?532287&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/fde6c3a50ca518a909ef35c22c0ee0e4.jpeg" alt="Fde6c3a50ca518a909ef35c22c0ee0e4?s=48">
+              destraynor
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 147
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="19,550 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 20k</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/deanohume/faster-mobile-websites" title="Faster Mobile Websites">
+      <div class="card deck-preview" data-id="600b86a7a8884e0ea0ae7677381ba0b6" data-slide-count="165" data-cover-image="https://files.speakerdeck.com/presentations/600b86a7a8884e0ea0ae7677381ba0b6/preview_slide_0.jpg?4829592">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/600b86a7a8884e0ea0ae7677381ba0b6/preview_slide_0.jpg?4829592&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/600b86a7a8884e0ea0ae7677381ba0b6/preview_slide_0.jpg?4829592&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/c620790ae5bf5b50c245b2e0ef95f338.png" alt="C620790ae5bf5b50c245b2e0ef95f338?s=48">
+              deanohume
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 294
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="27,911 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 28k</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+    <a href="https://speakerdeck.com/maggiecrowley/build-the-right-thing-and-hit-your-dates" title="Build The Right Thing And Hit Your Dates">
+      <div class="card deck-preview" data-id="7f346a69a57f48ee861a72211a157f7b" data-slide-count="68" data-cover-image="https://files.speakerdeck.com/presentations/7f346a69a57f48ee861a72211a157f7b/preview_slide_0.jpg?15853613">
+        <div class="deck-preview-image">
+          <div class="content"></div>
+          <div class="deck-preview-slide" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/7f346a69a57f48ee861a72211a157f7b/preview_slide_0.jpg?15853613&#39;);"></div>
+          <div class="deck-preview-background" style="background-image: url(&#39;https://files.speakerdeck.com/presentations/7f346a69a57f48ee861a72211a157f7b/preview_slide_0.jpg?15853613&#39;);"></div>
+          <div class="deck-preview-slide deck-preview-scrub-slide"></div>
+          <div class="deck-preview-background deck-preview-scrub-background"></div>
+          <div class="deck-preview-scrubber"></div>
+        </div>
+        <div class="deck-preview-meta d-flex px-2">
+            <div class="text-truncate py-3 px-2">
+              <img class="avatar avatar-sm" src="./Flyway – Database migration made easy - Speaker Deck_files/016edace78ffe826f2348d1e0c504afd.jpg" alt="016edace78ffe826f2348d1e0c504afd?s=48">
+              maggiecrowley
+            </div>
+            <div class="px-2 mr-auto py-3">
+              <svg class="icon icon-star "><use xlink:href="/icons/icons.svg#icon-star"></use></svg> 15
+            </div>
+            <div class="px-2 ml-auto py-3">
+              <span title="766 views"><svg class="icon icon-eye "><use xlink:href="/icons/icons.svg#icon-eye"></use></svg> 770</span>
+            </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+      </div>
+  </div>
+</div>
+
+  <div class="container py-4 transcript">
+    <h2 class="mb-4">Transcript</h2>
+    <ol>
+        <li class="mb-2">
+            <h3>
+              <a alt="Flyway
+Database migration made easy
+Like versio..." title="Flyway – Database migration made easy Flyway
+Database migration made easy
+Like versio..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_0.jpg">Flyway Database migration made easy Like version control for your</a>
+            </h3>
+            source code, but for your database Basil Bourque basil.bourque@pobox.com LinkedIn: basilbourque 2017-11-16 1
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="2 Photo: R. Parmiggiani
+" title="Flyway – Database migration made easy 2 Photo: R. Parmiggiani
+" href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_1.jpg">2 Photo: R. Parmiggiani</a>
+            </h3>
+            
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="Agenda
+• Deploying database changes
+• My past e..." title="Flyway – Database migration made easy Agenda
+• Deploying database changes
+• My past e..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_2.jpg">Agenda • Deploying database changes • My past experience (</a>
+            </h3>
+            4D ) • Problem: Changes ( add, modify, drop ) • Solution: Tooling ( Flyway ) 3
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="4D
+4D
+struc
+4D
+data
+tables/columns
+forms
+code
+d..." title="Flyway – Database migration made easy 4D
+4D
+struc
+4D
+data
+tables/columns
+forms
+code
+d..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_3.jpg">4D 4D struc 4D data tables/columns forms code data http://www.4D.com</a>
+            </h3>
+            4
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="4D deploy
+tables/columns
+forms
+code
+data
+4D
+str..." title="Flyway – Database migration made easy 4D deploy
+tables/columns
+forms
+code
+data
+4D
+str..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_4.jpg">4D deploy tables/columns forms code data 4D struc 4D data</a>
+            </h3>
+            Development 5 4D struc 4D data 4D struc Production
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="4D details
+• New tables pop
+into existence
+• Di..." title="Flyway – Database migration made easy 4D details
+• New tables pop
+into existence
+• Di..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_5.jpg">4D details • New tables pop into existence • Ditto,</a>
+            </h3>
+            columns • ‘On Server Startup’ tables/columns forms code data 4D struc 4D data 4D struc 4D data 4D struc Development Production 6 • Tokenized naming
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="7
+PostreSQL H2 Database
+" title="Flyway – Database migration made easy 7
+PostreSQL H2 Database
+" href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_6.jpg">7 PostreSQL H2 Database</a>
+            </h3>
+            
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="SQL
+This page intentionally left blank.
+8
+" title="Flyway – Database migration made easy SQL
+This page intentionally left blank.
+8
+" href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_7.jpg">SQL This page intentionally left blank. 8</a>
+            </h3>
+            
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="SQL snippets
+9
+" title="Flyway – Database migration made easy SQL snippets
+9
+" href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_8.jpg">SQL snippets 9</a>
+            </h3>
+            
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="some code
+10
+" title="Flyway – Database migration made easy some code
+10
+" href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_9.jpg">some code 10</a>
+            </h3>
+            
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="emails
+11
+" title="Flyway – Database migration made easy emails
+11
+" href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_10.jpg">emails 11</a>
+            </h3>
+            
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="diﬀ tool
+• “diff” tools
+• Compare &amp; contrast tw..." title="Flyway – Database migration made easy diﬀ tool
+• “diff” tools
+• Compare &amp;amp; contrast tw..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_11.jpg">diﬀ tool • “diff” tools • Compare &amp; contrast two</a>
+            </h3>
+            databases, determine differences • Perhaps generate SQL • Issues • Imperfect, incomplete • Reactive, not proactive 12
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="get organized
+• Enlightenment
+• Discipline, con..." title="Flyway – Database migration made easy get organized
+• Enlightenment
+• Discipline, con..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_12.jpg">get organized • Enlightenment • Discipline, conscious • No ad-hoc</a>
+            </h3>
+            changes • Gather all scripts &amp; code • Bundle scripts/classes • Keep with app (monolithic) • Centralize • Sequence the scripts/classes • String naming • Numbering, or date-time • Track current state of database • Create table to track this meta-data • Apply any later scripts/classes 13
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="Flyway
+FlywayDB.org
+14
+" title="Flyway – Database migration made easy Flyway
+FlywayDB.org
+14
+" href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_13.jpg">Flyway FlywayDB.org 14</a>
+            </h3>
+            
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="Flyway
+• Open-source ( Apache license )
+• Free-..." title="Flyway – Database migration made easy Flyway
+• Open-source ( Apache license )
+• Free-..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_14.jpg">Flyway • Open-source ( Apache license ) • Free-of-cost •</a>
+            </h3>
+            Simple design, not high-tech  “low-friction” • Growing rapidly in popularity • Run from command-line, or Java 15 Downloads per year
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="how it works
+" title="Flyway – Database migration made easy how it works
+" href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_15.jpg">how it works</a>
+            </h3>
+            
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="how it works
+" title="Flyway – Database migration made easy how it works
+" href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_16.jpg">how it works</a>
+            </h3>
+            
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="how it works
+" title="Flyway – Database migration made easy how it works
+" href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_17.jpg">how it works</a>
+            </h3>
+            
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="optional Java classes
+19
+" title="Flyway – Database migration made easy optional Java classes
+19
+" href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_18.jpg">optional Java classes 19</a>
+            </h3>
+            
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="meta-data
+20
+installed_rank version description..." title="Flyway – Database migration made easy meta-data
+20
+installed_rank version description..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_19.jpg">meta-data 20 installed_rank version description type script checksum installed_ by</a>
+            </h3>
+            installed_on execution_time success 1 1 Initial Setup SQL V1__Initial_Setup.sql 1996767037 axel 2016-02-04 22:23:00.0 546 true 2 2 First Changes SQL V2__First_Changes.sql 1279644856 axel 2016-02-06 09:18:00.0 127 true schema_version 20
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="verbs
+• migrate
+• Find and apply migrations
+• E..." title="Flyway – Database migration made easy verbs
+• migrate
+• Find and apply migrations
+• E..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_20.jpg">verbs • migrate • Find and apply migrations • Each</a>
+            </h3>
+            migration wrapped in txn • clean • Wipes out all migrations • Refresh, to start again, for testing • Not in production !!! • `setCleanDisabled`   21 • validate • Compares migrations, found vs applied • info • Object containing data of applied migrations, as seen in grid earlier • baseline • For using Flyway with existing db • repair • More like ‘re-sync’ your table of applied migrations to the found migrations
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="automate
+• Auto-migrate
+• Startup 
+( monolithic..." title="Flyway – Database migration made easy automate
+• Auto-migrate
+• Startup 
+( monolithic..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_21.jpg">automate • Auto-migrate • Startup  ( monolithic single app )</a>
+            </h3>
+            • Shell scripts / Build scripts  ( command-line, wraps Java code ) • Auto-detect scripts/classes • Apply the unapplied • Fail-fast • A migration fails • DB is inconsistent 22
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="useful for testing
+• Easily control your databa..." title="Flyway – Database migration made easy useful for testing
+• Easily control your databa..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_22.jpg">useful for testing • Easily control your database as a</a>
+            </h3>
+            test ﬁxture • Start fresh, migrate to any point in development history • Drop-in scripts • Create mock data • Load sanitized data • Flyway::clean • Wipe applied migrations ( refresh ) • Not in production !!! • Flag to disallow clean 23
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="convention over conﬁguration
+• Command-line
+• F..." title="Flyway – Database migration made easy convention over conﬁguration
+• Command-line
+• F..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_23.jpg">convention over conﬁguration • Command-line • Folder within Flyway folder.</a>
+            </h3>
+            • Java • Classpath • Where classes found to execute • db.migration • Automatic recursive scanning for: • SQL scripts ( naming convention ) • Java classes ( name &amp; interface ) 24
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="multiple locations
+• Classpath and/or external ..." title="Flyway – Database migration made easy multiple locations
+• Classpath and/or external ..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_24.jpg">multiple locations • Classpath and/or external ﬁles • Set `locations`</a>
+            </h3>
+            to include speciﬁc folders 25
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="naming
+26
+version
+_ _ description
+dots &amp; unders..." title="Flyway – Database migration made easy naming
+26
+version
+_ _ description
+dots &amp;amp; unders..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_25.jpg">naming 26 version _ _ description dots &amp; underscores V</a>
+            </h3>
+            3 1.7.19 2017_01_23 = versioned V2017_01_23_09_ _Create_users_and_groups.sql extension } converted to dots major.minor.micro.nano.etc R = repeatable .
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="naming
+27
+version
+_ _ description
+dots &amp; unders..." title="Flyway – Database migration made easy naming
+27
+version
+_ _ description
+dots &amp;amp; unders..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_26.jpg">naming 27 version _ _ description dots &amp; underscores V</a>
+            </h3>
+            R 3 1.7.19 2017_01_23 = versioned, run once = repeatable, run every time V2017_01_23_09_ _Create_users_and_groups.sql V2017.01.31.14_ _Create_invoicing_tables.sql extension } converted to dots major.minor.micro.nano.etc © 2017 Basil Bourque pair of underscores no spaces all one word = 2017.1.23.9 = 2017.1.31.14 .
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="bad names
+• 2017_41_02_Create_invoice_table.sql..." title="Flyway – Database migration made easy bad names
+• 2017_41_02_Create_invoice_table.sql..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_27.jpg">bad names • 2017_41_02_Create_invoice_table.sql • 2017-12-31T01:23:34__Add_index_on_customer.sql • 2007.11.23.98__My_ﬁrst_SQL • 2018.11.23.15__Delete_everything.sql</a>
+            </h3>
+            • 192.68__.sql • 101.39.1__Redeﬁne index on customer.sql 28
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="bad names – preﬁx ‘V’
+• V2017_41_02_Create_invo..." title="Flyway – Database migration made easy bad names – preﬁx ‘V’
+• V2017_41_02_Create_invo..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_28.jpg">bad names – preﬁx ‘V’ • V2017_41_02_Create_invoice_table.sql • V2017-12-31T01:23:34__Add_index_on_customer.sql •</a>
+            </h3>
+            V2007.11.23.98__My_ﬁrst_SQL • V2018.11.23.15__Delete_everything.sql • V192.68__.sql • V101.39.1__Redeﬁne index on customer.sql 29
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="bad names – solved
+• V2017_41_02_Create_invoice..." title="Flyway – Database migration made easy bad names – solved
+• V2017_41_02_Create_invoice..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_29.jpg">bad names – solved • V2017_41_02_Create_invoice_table.sql  needs pair of underscores</a>
+            </h3>
+            in middle ( the '41' is a red-herring, legal, not really a date, 2017.41.2 ) • V2017-12-31T01:23:34__Add_index_on_customer.sql  standard ISO 8601 date-time is not valid ( hyphens &amp; colons &amp; 'T' ) • V2007.11.23.98__My_ﬁrst_SQL  missing extension ( .sql ) • V2018.11.23.15__Delete_everything.sql  trick question: Technically correct, but use the Flyway verb clean instead • V192.68__.sql  missing description – might work technically, but poor practice ( note: arbitrary numbers OK ) • V101.39.1__Redeﬁne index on customer.sql  spaces in description – No spaces allowed, all one word 30
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="ﬂexible
+• Flyway is quite ﬂexible
+• Only showin..." title="Flyway – Database migration made easy ﬂexible
+• Flyway is quite ﬂexible
+• Only showin..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_30.jpg">ﬂexible • Flyway is quite ﬂexible • Only showing defaults</a>
+            </h3>
+            here • Hooks for overriding conventions ( naming, locations ) • Spring supported ( ‘SpringJdbcMigration’ class, ‘SpringJdbcTemplate’ ) • Callbacks during execution • Before/After each migration, clean, info, validate, baseline, repair 31
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="Java Servlet web apps
+• Location for scripts/cl..." title="Flyway – Database migration made easy Java Servlet web apps
+• Location for scripts/cl..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_31.jpg">Java Servlet web apps • Location for scripts/classes in web</a>
+            </h3>
+            apps  not documented • ‘classpath’ varies by Servlet container • ‘WEB-INF’ • Folder guaranteed to not be served • ‘lib’ = nested folder for .jar ﬁles • ‘classes’ = nested folder for .class ﬁles • /db/migration/ suggested in doc • Nested folders scanned recursively 32
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="no magic
+• Flyway adds a table, ‘SCHEMA_VERSION..." title="Flyway – Database migration made easy no magic
+• Flyway adds a table, ‘SCHEMA_VERSION..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_32.jpg">no magic • Flyway adds a table, ‘SCHEMA_VERSION’ • Track</a>
+            </h3>
+            each migration applied • Last migration = Current version of db • Use JDBC connection to database • Flyway provides harness for executing your SQL script within a txn • Repeat, for each SQL ﬁle &amp; each Java class 33
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="runtime ﬂow
+34
+Java app
+shell script
+cmd
+wrappe..." title="Flyway – Database migration made easy runtime ﬂow
+34
+Java app
+shell script
+cmd
+wrappe..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_33.jpg">runtime ﬂow 34 Java app shell script cmd wrapper around</a>
+            </h3>
+            Flyway classes JRE (bundled) classes Flyway classes locations conﬁg &amp; Java classpath JDBC driver/conn database server SQL (&amp; Java) migrations JRE txn
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="4 levels of hooks
+• SQL scripts
+• JdbcMigration..." title="Flyway – Database migration made easy 4 levels of hooks
+• SQL scripts
+• JdbcMigration..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_34.jpg">4 levels of hooks • SQL scripts • JdbcMigration sub-class,</a>
+            </h3>
+            Java (auto-conn, auto-txn) • Callbacks, Java ( before &amp; after each verb ) • Custom migration resolvers &amp; executors • Implement your own MigrationResolver coupled with a custom MigrationExecutor. • Loading things like CSV-based migrations or other custom formats • Make your own database connection &amp; transaction 35 Control &amp; power easy medium hard medium
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="When things go wrong
+• Each migration in a tran..." title="Flyway – Database migration made easy When things go wrong
+• Each migration in a tran..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_35.jpg">When things go wrong • Each migration in a transaction</a>
+            </h3>
+            • Rollback DML ( changes to data ) • DDL ( structure of tables &amp; columns ) • Rolled back only if database is capable ( Postgres, yes ) 36
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="caveats
+• No ‘downgrading’  
+( Rails Migrations..." title="Flyway – Database migration made easy caveats
+• No ‘downgrading’  
+( Rails Migrations..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_36.jpg">caveats • No ‘downgrading’   ( Rails Migrations ) •</a>
+            </h3>
+            Not practicable • Cannot create a database • clean verb • Does create a schema   ( as needed ) • Identifying dev-test-qa-prod 37 • Best for greenﬁeld • Consider re-creating your db • Can ‘baseline’ an existing db • Documentation organization • Confusing layout • More doc than you may realize
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="Postgres notes
+• 9.0 and later
+• org.postgresql..." title="Flyway – Database migration made easy Postgres notes
+• 9.0 and later
+• org.postgresql..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_37.jpg">Postgres notes • 9.0 and later • org.postgresql.Driver • DDL</a>
+            </h3>
+            exported by pg_dump can be used unchanged in a Flyway migration 38 • Limitations • JDBC only.  No support for psql meta- commands with no Jdbc equivalent like \set • Multiline RULE declarations are not parsed correctly  Issue 183
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="support
+• Creator: Axel Fontaine of BoxFuse
+• P..." title="Flyway – Database migration made easy support
+• Creator: Axel Fontaine of BoxFuse
+• P..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_38.jpg">support • Creator: Axel Fontaine of BoxFuse • Professional Support</a>
+            </h3>
+            Subscription • Training • Sponsor-a-feature • StackOverﬂow.com – ‘ﬂyway’ tag • Issue tracker on GitHub.com 39
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="databases
+40
+Postgres – your own, EnterpriseDB,..." title="Flyway – Database migration made easy databases
+40
+Postgres – your own, EnterpriseDB,..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_39.jpg">databases 40 Postgres – your own, EnterpriseDB, Heroku, Amazon RDS</a>
+            </h3>
+            JDBC drivers bundled, or `drivers` folder
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="competition
+• Liquibase
+• XML conﬁguration
+• Op..." title="Flyway – Database migration made easy competition
+• Liquibase
+• XML conﬁguration
+• Op..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_40.jpg">competition • Liquibase • XML conﬁguration • Open-source (Apache), free-of-cost</a>
+            </h3>
+            • Redgate • MS Windows world • Commercial • Flyway • Open-source ( Apache ), free-of-cost • Plain SQL ﬁles   ( optional Java classes ) • Not high-tech • No dependencies • Simple, yet ﬂexible 41
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="puzzler
+• Why is there a checksum in the Flyway..." title="Flyway – Database migration made easy puzzler
+• Why is there a checksum in the Flyway..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_41.jpg">puzzler • Why is there a checksum in the Flyway</a>
+            </h3>
+            ‘SCHEMA_VERSION’ ? 42 installed_rank version description type script checksum installed_ by installed_on execution_time success 1 1 Initial Setup SQL V1__Initial_Setup.sql 1996767037 axel 2016-02-04 22:23:00.0 546 true 2 2 First Changes SQL V2__First_Changes.sql 1279644856 axel 2016-02-06 09:18:00.0 127 true schema_version
+        </li>
+        <li class="mb-2">
+            <h3>
+              <a alt="`
+• Vaadin web app ( pure Java server )
+• Creat..." title="Flyway – Database migration made easy `
+• Vaadin web app ( pure Java server )
+• Creat..." href="https://files.speakerdeck.com/presentations/a7f0bfec0ae946fd9b18d64b40ad8697/slide_42.jpg">` • Vaadin web app ( pure Java server )</a>
+            </h3>
+            • Create Vaadin project   via Maven ‘archetype’ • Add JDBC driver • Add Flyway library • Build &amp; run • Add startup hook ( ServletContextListener ) • Set up DataSource ( JDBC conn ) • Call Flyway • Create SQL ﬁle, &amp; folders • Run, verify output on console • Examine database for changes 43 Basil Bourque basil.bourque@pobox.com LinkedIn: basilbourque « ﬁn »
+        </li>
+    </ol>
+  </div>
+
+    </div>
+
+    <footer class="d-block border-top">
+  <div class="container py-3 py-md-5 text-muted">
+    <div class="row text-center text-md-left">
+      <div class="col-12 col-md-auto mr-auto mb-3 mb-md-0">
+        <div class="copyright-text mb-3 mb-md-0">Copyright © 2021 Speaker Deck, LLC.</div>
+        <div>All slide content and descriptions are owned by their&nbsp;creators.</div>
+      </div>
+      <div class="col-12 col-md-auto">
+        <a href="https://speakerdeck.com/faq">F.A.Q.</a> &nbsp;
+        <a href="https://speakerdeck.com/tos">Terms</a> &nbsp;
+        <a href="https://speakerdeck.com/privacy">Privacy</a> &nbsp;
+        <a href="https://speakerdeck.com/dmca">DMCA</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      <script src="./Flyway – Database migration made easy - Speaker Deck_files/stats-772c383bdaab2f02f33d.js.download"></script>
+  <script data-turbolinks-eval="false">
+    Stats.host = 'speakerdeck.com';
+  </script>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-19290517-1']);
+      _gaq.push(['_setDomainName', '.speakerdeck.com']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+
+    <script>
+      !function(f,b,e,v,n,t,s) {
+        if(f.fbq) return;
+        n=f.fbq=function() { n.callMethod? n.callMethod.apply(n,arguments) : n.queue.push(arguments) };
+        if(!f._fbq) f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0'; n.queue=[];
+        t=b.createElement(e); t.async=!0; t.src=v;
+        s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js');
+
+      fbq('init', '2893765844191276');
+      fbq('track', 'PageView');
+
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2893765844191276&ev=PageView&noscript=1" />
+    </noscript>
+
+    <script type="text/javascript" src="./Flyway – Database migration made easy - Speaker Deck_files/widgets.js.download"></script>
+<script>
+Array.from(document.querySelectorAll('.facebook-share')).forEach((element) => {
+  element.addEventListener('click', function(e){
+    e.preventDefault()
+    let title = encodeURIComponent(document.title)
+    let url = encodeURIComponent(document.location.href)
+    window.open('https://www.facebook.com/dialog/share?app_id=1428152667543587&display=popup&href=' + url + '&title=' + title, "_blank", "toolbar=no,menubar=no,location=yes,resizable=yes,scrollbars=yes,status=yes,width=600,height=400,modal=yes,alwaysRaised=yes");
+  }, false)
+})
+</script>
+
+  
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Flyway – Database migration made easy - Speaker Deck_files/widget_iframe.0504c5db6e58d499a7ba93c246a8554d.html" title="Twitter settings iframe" style="display: none;"></iframe><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./Flyway – Database migration made easy - Speaker Deck_files/saved_resource.html"></iframe></body></html>
